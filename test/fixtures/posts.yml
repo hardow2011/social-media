@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  unique_id: MyString
-  caption: MyString
-  user: one
+first:
+  # unique_id: MyString
+  caption: first post
+  # user: one
 
 two:
-  unique_id: MyString
-  caption: MyString
-  user: two
+  # unique_id: MyString
+  caption: second post
+  # user: two
