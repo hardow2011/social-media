@@ -1,0 +1,10 @@
+<%= simple_form_for post do |f| %>
+    <% if post.errors.any? %>
+        <div>
+            <%= post.errors.full_messages.to_sentence.capitalize %>
+        <div>
+    <% end %>
+
+    <%= f.input :caption, input_html: { autofocus: true } %>
+    <%= f.submit %>
+<% end %>

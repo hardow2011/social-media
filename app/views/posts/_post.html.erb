@@ -1,0 +1,10 @@
+<div>
+    <%= link_to post.caption, post_path(post) %>
+    <div>
+        <%= button_to "Delete",
+                    post_path(post),
+                    method: :delete %>
+        <%= link_to "Edit",
+                    edit_post_path(post) %>
+    <div>
+</div>

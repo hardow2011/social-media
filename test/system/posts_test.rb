@@ -9,13 +9,15 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_path
     assert_selector "h1", text: "Posts"
 
-    click on "New Post"
-    assert_selector "h1", "New Post"
+    click_on "New Post"
+    assert_selector "h1", text: "New Post"
+
 
     fill_in "Caption", with: "Capybara post"
     click_on "Create Post"
 
     assert_selector "h1", text: "Posts"
+
     assert_text "Capybara post"
   end
 
@@ -35,7 +37,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
     assert_selector "h1", text: "Edit Post"
 
-    fill_in "Caption", with: "Updated post"
+    fill_in "Caption", with: "Updated Post"
     click_on "Update Post"
 
     assert_selector "h1", text: "Posts"

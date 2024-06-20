@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      post:
+        caption: null
+    labels:
+      post:
+        caption: Caption
+
+  helpers:
+    submit:
+      post:
+        create: Create Post
+        update: Update Post
