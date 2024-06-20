@@ -6,7 +6,7 @@
 #  caption    :string           default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  unique_id  :string           default(""), not null
+#  unique_id  :string(11)       default(""), not null
 #  user_id    :bigint           not null
 #
 # Indexes
