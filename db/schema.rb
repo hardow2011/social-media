@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_191127) do
 
   create_table "posts", force: :cascade do |t|
     t.string "unique_id", limit: 11, null: false
-    t.string "caption", default: "", null: false
+    t.string "caption", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unique_id"], name: "index_posts_on_unique_id", unique: true

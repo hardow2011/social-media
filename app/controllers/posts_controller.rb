@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: "Post was successfuly created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to posts_path, notice: "Post was successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

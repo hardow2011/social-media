@@ -4,6 +4,6 @@ class SetLimitForPostsUniqueId < ActiveRecord::Migration[7.1]
   end
 
   def down
-    change_column :posts, :unique_id, :string, limit: null
+    change_column :posts, :unique_id, :string, limit: nil
   end
 end
