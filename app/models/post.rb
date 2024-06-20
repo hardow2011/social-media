@@ -21,7 +21,7 @@
 class Post < ApplicationRecord
   require 'securerandom'
 
-  belongs_to :user
+  # belongs_to :user
 
   before_validation :unique_id
 
