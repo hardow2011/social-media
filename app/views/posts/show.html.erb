@@ -1,8 +1,12 @@
 <main class="section">
-  <%= link_to sanitize("&larr; Back to posts"), posts_path %>
-  <div>
-    <h1>
-      <%= @post.caption %>
-    </h1>
+  <div class="container">
+    <div class="block">
+      <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+    </div>
+    <div>
+      <h1>
+        <%= @post.caption %>
+      </h1>
+    </div>
   </div>
 </main>
