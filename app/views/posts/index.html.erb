@@ -1,13 +1,15 @@
 <main class="section">
-    <div class="columns is-vcentered">
-        <div class="column">
-        <h1 class="title is-1">Posts</h1>
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column">
+            <h1 class="title is-1">Posts</h1>
+            </div>
+            <div class="column is-narrow">
+            <%= link_to "New Post",
+                        new_post_path,
+                        class: "button is-link" %>
+            </div>
         </div>
-        <div class="column is-narrow">
-        <%= link_to "New Post",
-                    new_post_path,
-                    class: "button is-link" %>
-        </div>
+        <%= render @posts %>
     </div>
-    <%= render @posts %>
 </main>

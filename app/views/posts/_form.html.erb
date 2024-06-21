@@ -4,7 +4,15 @@
             <%= post.errors.full_messages.to_sentence.capitalize %>
         <div>
     <% end %>
-
-    <%= f.input :caption, input_html: { autofocus: true } %>
-    <%= f.submit %>
+    <div class="columns">
+        <div class="column">
+            <%= f.input :caption, input_html: { autofocus: true }, label: false, placeholder: true %>
+        </div>
+        <div class="column">
+            <div class="buttons is-right">
+                <%= link_to 'Back to Posts', posts_path, class: 'button' %>
+                <%= f.submit class: 'button is-success' %>
+            </div>
+        </div>
+    </div>
 <% end %>

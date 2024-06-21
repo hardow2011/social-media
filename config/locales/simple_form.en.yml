@@ -2,7 +2,7 @@ en:
   simple_form:
     placeholders:
       post:
-        caption: null
+        caption: Caption
     labels:
       post:
         caption: Caption
