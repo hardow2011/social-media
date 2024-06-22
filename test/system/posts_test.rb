@@ -51,4 +51,15 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Delete", match: :first
     assert_no_text @post.caption
   end
+
+  test "Liking a post" do
+    visit posts_path
+    assert_selector "h1", text: "Posts"
+
+    assert_text "(2) Likes"
+
+    click_on "(2) Likes", match: :first
+
+    assert_text "(3) Likes"
+  end
 end
