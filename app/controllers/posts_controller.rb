@@ -39,8 +39,12 @@ class PostsController < ApplicationController
   end
 
   def like_post
-    like = Like.new(post: @post, user: current_user)
-    like.save
+    like = Like.where(post: @post, user: current_user)
+    if like.any?
+      like.delete_all
+    else
+      Like.create(post: @post, user: current_user)
+    end
     redirect_to posts_path, notice: "Post was successfully liked."
   end
 
