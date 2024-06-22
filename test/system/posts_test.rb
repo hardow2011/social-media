@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
   setup do
+    login_as users(:john)
     @post = posts(:first)
   end
 

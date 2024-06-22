@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like_post]
 
   def index
-    @posts = Post.all
+    @posts = Post.ordered
   end
 
   def show
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       redirect_to posts_path, notice: "Post was successfuly created."
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   def like_post
-    like = @post.likes.build
+    like = Like.new(post: @post, user: current_user)
     like.save
     redirect_to posts_path, notice: "Post was successfully liked."
   end

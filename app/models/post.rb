@@ -32,6 +32,8 @@ class Post < ApplicationRecord
 
   validates :caption, presence: true
 
+  scope :ordered, -> { order(id: :desc) }
+
   attr_readonly :unique_id
 
   private
