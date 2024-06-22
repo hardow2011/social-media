@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy like_post]
 
   def index
     @posts = Post.all
@@ -36,6 +36,12 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_path, notice: "Post was successfully destroyted."
+  end
+
+  def like_post
+    like = @post.likes.build
+    like.save
+    redirect_to posts_path, notice: "Post was successfully liked."
   end
 
   private

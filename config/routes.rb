@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :posts
+  post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
 end

@@ -56,10 +56,14 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_path
     assert_selector "h1", text: "Posts"
 
-    assert_text "(2) Likes"
+    assert_button "(0) Likes"
 
-    click_on "(2) Likes", match: :first
+    click_on "(0) Likes", match: :first
 
-    assert_text "(3) Likes"
+    assert_button "(1) Like"
+
+    click_on "(1) Like", match: :first
+
+    assert_button "(2) Likes"
   end
 end

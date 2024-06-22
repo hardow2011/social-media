@@ -1,16 +1,30 @@
-<div class="columns">
-    <div class="column">
-        <%= link_to post.caption, post_path(post) %>
+<div class="block">
+  <div class="card">
+    <div class="card-content">
+      <div class="columns">
+          <div class="column">
+              <%= link_to post.caption, post_path(post) %>
+          </div>
+          <div class="column is-narrow">
+              <div class="buttons is-right">
+                  <%= button_to "Delete",
+                              post_path(post),
+                              method: :delete,
+                              class: 'button is-danger' %>
+                  <%= link_to "Edit",
+                              edit_post_path(post),
+                              class: 'button is-link' %>
+              </div>
+          </div>
+      </div>
     </div>
-    <div class="column is-narrow">
-        <div class="buttons is-right">
-            <%= button_to "Delete",
-                        post_path(post),
-                        method: :delete,
-                        class: 'button is-danger' %>
-            <%= link_to "Edit",
-                        edit_post_path(post),
-                        class: 'button is-link' %>
-        </div>
-    <div>
+    <footer class="card-footer">
+      <div class="card-footer-item is-justify-content-flex-end">
+      <% likes_amount = post.likes.length %>
+        <%= simple_form_for post, url: like_post_path(post.id), method: :post do |f| %>
+          <%= f.submit "(#{likes_amount}) #{'Like'.pluralize(likes_amount)} ", class: 'button is-success' %>
+        <% end %>
+      </div>
+    </footer>
+  </div>
 </div>

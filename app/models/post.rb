@@ -16,6 +16,7 @@ class Post < ApplicationRecord
   require 'securerandom'
 
   # belongs_to :user
+  has_many :likes, dependent: :delete_all
 
   before_validation :assign_unique_id, on: :create
 
