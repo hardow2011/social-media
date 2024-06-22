@@ -2,6 +2,8 @@
 
 like_1_post_2:
   post: second
+  user: carlos
 
 like_2_post_2:
   post: second
+  user: john

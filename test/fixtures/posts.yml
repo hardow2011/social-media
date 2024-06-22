@@ -3,9 +3,14 @@
 first:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: first post
-  # user: one
+  user: john
 
 second:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: second
-  # user: two
+  user: carlos
+
+third:
+  unique_id: <%= SecureRandom.alphanumeric(11) %>
+  caption: third
+  user: john
