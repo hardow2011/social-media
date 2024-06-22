@@ -3,7 +3,7 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     login_as users(:john)
-    @post = posts(:first)
+    @post = posts(:third)
   end
 
   test "Creating a new post" do
@@ -65,6 +65,6 @@ class PostsTest < ApplicationSystemTestCase
 
     click_on "(1) Like", match: :first
 
-    assert_button "(2) Likes"
+    assert_button "(0) Likes"
   end
 end
