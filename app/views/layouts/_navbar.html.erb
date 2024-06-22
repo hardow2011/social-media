@@ -1,0 +1,29 @@
+<nav class="navbar p-2" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+            <% if user_signed_in? %>
+            <%= button_to "Sign out",
+                    destroy_user_session_path,
+                    method: :delete,
+                    class: "button is-danger" %>
+            <% else %>
+            <%= link_to "Sign in",
+                new_user_session_path,
+                class: "button is-light" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
