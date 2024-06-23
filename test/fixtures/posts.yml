@@ -4,13 +4,16 @@ first:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: first post
   user: john
+  community: cooking
 
 second:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: second
   user: carlos
+  community: cars
 
 third:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: third
   user: john
+  community: cooking
