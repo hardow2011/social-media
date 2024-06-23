@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   resources :posts
   post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
+
+  resources :communities
 end
