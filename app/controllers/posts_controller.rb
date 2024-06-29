@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like_post]
 
   def index
+    @communities = Community.all
     @posts = Post.ordered
   end
 
@@ -55,6 +56,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:caption, :community_id)
   end
 end

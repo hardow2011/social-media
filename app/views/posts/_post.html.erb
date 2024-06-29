@@ -22,9 +22,8 @@
     </div>
     <footer class="card-footer">
       <div class="card-footer-item is-justify-content-flex-end">
-      <% likes_amount = post.likes.length %>
-        <%= simple_form_for post, url: like_post_path(post.id), method: :post do |f| %>
-          <%= f.submit "(#{likes_amount}) #{'Like'.pluralize(likes_amount)} ", class: 'button is-success' %>
+        <%= form_with url: like_post_path(post.id) do |f| %>
+          <%= f.submit "(#{post.likes_amount}) #{'Like'.pluralize(post.likes_amount)}", class: 'button is-success' %>
         <% end %>
       </div>
     </footer>

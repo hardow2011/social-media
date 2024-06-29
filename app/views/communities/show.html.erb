@@ -1,0 +1,15 @@
+<main class="section">
+  <div class="container">
+    <div class="block">
+      <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+    </div>
+    <div class="block">
+        <h1><%= @community.handle %></h1>
+        <h1><%= @community.name %></h1>
+        <h1><%= @community.description %></h1>
+    </div>
+    <div class="block">
+        <%= render @community.posts %>
+    </div>
+  </div>
+</main>

@@ -40,6 +40,10 @@ class Post < ApplicationRecord
 
   attr_readonly :unique_id
 
+  def likes_amount
+    self.likes.length
+  end
+
   private
 
   def assign_unique_id

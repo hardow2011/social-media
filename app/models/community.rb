@@ -15,4 +15,17 @@
 #
 class Community < ApplicationRecord
   has_many :posts
+
+  before_create :strip_fields, :set_handle
+
+  private
+
+  def strip_fields
+    self.name = self.name.strip
+    self.description = self.description.strip
+  end
+
+  def set_handle
+    self.handle = self.name.parameterize
+  end
 end

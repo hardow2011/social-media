@@ -1,0 +1,10 @@
+<main class="section">
+    <div class="container">
+        <div class="block">
+            <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+        </div>
+            <h1 class="title is-1">New Community</h1>
+
+        <%= render "form", community: @community %>
+    </div>
+</main>

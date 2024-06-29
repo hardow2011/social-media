@@ -8,8 +8,14 @@
             <%= link_to "New Post",
                         new_post_path,
                         class: "button is-link" %>
+            <%= link_to "New Community",
+                        new_community_path,
+                        class: "button is-link" %>
             </div>
         </div>
+            <% for community in @communities %>
+              <%= link_to community.handle, community_path(community) %>
+            <% end %>
         <%= render @posts %>
     </div>
 </main>
