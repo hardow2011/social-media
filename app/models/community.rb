@@ -18,6 +18,11 @@ class Community < ApplicationRecord
 
   before_create :strip_fields, :set_handle
 
+  # The id will be the handle
+  def to_param
+    handle
+  end
+
   private
 
   def strip_fields
