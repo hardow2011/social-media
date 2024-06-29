@@ -7,7 +7,7 @@
     <div class="columns">
         <div class="column">
             <div class="field">
-                <label class="label">Caption</label>
+                <%= f.label :name, "Name", class: 'label' %>
                 <div class="control">
                     <%= f.text_field :name, class: 'input' %>
                 </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="column">
             <div class="field">
-                <label class="label">Description</label>
+                <%= f.label :description, "Description", class: 'label' %>
                 <div class="control">
                     <%= f.text_field :description, class: 'input' %>
                 </div>
