@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
-  resources :posts
-  post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
 
-  resources :communities, path: 'c'
+  resources :communities, path: 'c', shallow: true do
+    resources :posts
+    post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
+  end
 end
