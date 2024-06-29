@@ -4,6 +4,7 @@ class CommunitiesTest < ApplicationSystemTestCase
   setup do
     login_as users(:john)
     @cooking_community = communities(:cooking)
+    @cars_community = communities(:cars)
   end
 
   test "Creating a new Community" do
@@ -34,5 +35,6 @@ class CommunitiesTest < ApplicationSystemTestCase
     assert_text @cooking_community.description
 
     assert_text @cooking_community.posts.first.caption
+    assert_no_text @cars_community.posts.first.caption
   end
 end
