@@ -1,5 +1,9 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: %i[show]
+  include CommunitySetting
+
+  before_action only: %i[show] do
+    set_community_by_handle(params[:id])
+  end
 
   def new
     @community = Community.new
@@ -22,7 +26,7 @@ class CommunitiesController < ApplicationController
   private
 
   def set_community
-    @community =  Community.find_sole_by(handle: params[:id])
+    @community =  Community.find(params[:id])
   end
 
   def community_params

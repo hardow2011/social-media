@@ -1,20 +1,15 @@
-<%= form_with model: post do |f| %>
+<%= form_with model: [community, post]  do |f| %>
     <% if post.errors.any? %>
         <div>
             <%= post.errors.full_messages.to_sentence.capitalize %>
         <div>
     <% end %>
+    <%
+=begin%>
+ <%= form.hidden_field :community_id, value: "foo" %> 
+<%
+=end%>
     <div class="columns">
-        <div class="column">
-            <div class="field">
-                <%= f.label :community_id, "Community", class: 'label' %>
-                <div class="control">
-                    <div class="select is-flex">
-                        <%= f.select :community_id, Community.order(:name).map { |community| [community.name, community.id] }, {}, {class: 'is-flex-grow-1'} %>
-                </div>
-            </div>
-        </div>
-        </div>
         <div class="column">
             <div class="field">
                 <%= f.label :caption, "Caption", class: 'label' %>
@@ -28,7 +23,7 @@
     </div>
     <div class="block">
         <div class="buttons is-right">
-            <%= link_to 'Back to Posts', posts_path, class: 'button' %>
+            <%= link_to 'Back to Posts', community_posts_path, class: 'button' %>
             <%= f.submit class: 'button is-success' %>
         </div>
     </div>

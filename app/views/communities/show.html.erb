@@ -1,15 +1,23 @@
 <main class="section">
   <div class="container">
     <div class="block">
-      <%= link_to sanitize("&larr; Back to posts"), posts_path %>
+      <div class="columns is-vcentered">
+        <div class="column is-flex is-justify-content-flex-end">
+        <%= link_to "New Post",
+                    new_community_post_path(@community),
+                    class: "button is-link" %>
+        </div>
+    </div>
     </div>
     <div class="block">
-        <h1><%= @community.handle %></h1>
-        <h1><%= @community.name %></h1>
-        <h1><%= @community.description %></h1>
+        <h1 class="title is-1"><%= @community.name %></h1>
+        <p>c/<%= @community.handle %></p>
+        <h3 class="subtitle is-3"><%= @community.description %></h3>
     </div>
     <div class="block">
-        <%= render @community.posts %>
+    <% for post in @community.posts%>
+      <%= render partial: 'posts/post', locals: { post: post, community_handle: @community.handle } %>
+    <% end %>
     </div>
   </div>
 </main>

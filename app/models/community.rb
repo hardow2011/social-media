@@ -23,6 +23,10 @@ class Community < ApplicationRecord
     handle
   end
 
+  def self.get_by_handle(handle)
+    Community.find_sole_by(handle: handle)
+  end
+
   private
 
   def strip_fields

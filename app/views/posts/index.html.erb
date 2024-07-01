@@ -14,7 +14,7 @@
             </div>
         </div>
             <% for community in @communities %>
-              <%= link_to community.handle, community_path(community) %>
+              <%= link_to community.handle, community_path(community.handle) %>
             <% end %>
         <%= render @posts %>
     </div>

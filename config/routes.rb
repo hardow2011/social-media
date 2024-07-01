@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   root "pages#home"
 
 
-  resources :communities, path: 'c', shallow: true do
+  resources :communities, path: 'c' do
     resources :posts
-    post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
   end
+  post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
 end

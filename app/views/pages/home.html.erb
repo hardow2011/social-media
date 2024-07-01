@@ -6,9 +6,18 @@
     </div>
     <div class="block">
         <% if user_signed_in? %>
-            <%= link_to "View posts", posts_path, class: "button is-link" %>
+            <%
+=begin%>
+ <%= link_to "View posts", community_posts_path, class: "button is-link" %> 
+<%
+=end%>
         <% else %>
             <%= link_to "Sign in", new_user_session_path, class: "button" %>
+        <% end %>
+    </div>
+    <div class="block">
+        <% for community in @communities %>
+            <%= link_to community.handle, community_path(community) %>
         <% end %>
     </div>
   </div>

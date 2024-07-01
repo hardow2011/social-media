@@ -3,17 +3,17 @@
     <div class="card-content">
       <div class="columns">
           <div class="column">
-              <%= link_to post.caption, post_path(post) %>
+              <%= link_to post.caption, community_post_path(community_handle, post) %>
           </div>
           <% if post.user == current_user %>
           <div class="column is-narrow">
               <div class="buttons is-right">
                   <%= button_to "Delete",
-                              post_path(post),
+                              community_post_path(community_handle, post),
                               method: :delete,
                               class: 'button is-danger' %>
                   <%= link_to "Edit",
-                              edit_post_path(post),
+                              edit_community_post_path(community_handle, post),
                               class: 'button is-link' %>
               </div>
           </div>

@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
+  include CommunitySetting
+
   before_action :set_post, only: %i[show edit update destroy like_post]
+  before_action only: %i[new edit destroy] do
+    set_community_by_handle(params[:community_id])
+  end
 
   def index
     @communities = Community.all
@@ -15,9 +20,11 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    community = Community.get_by_handle(params[:community_id])
+    @post.community = community
 
     if @post.save
-      redirect_to posts_path, notice: "Post was successfuly created."
+      redirect_to community_path(@post.community), notice: "Post was successfuly created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +35,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "Post was successfully updated."
+      redirect_to community_path(@post.community), notice: "Post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +43,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: "Post was successfully destroyted."
+    redirect_to community_path(@community), notice: "Post was successfully destroyted."
   end
 
   def like_post
@@ -46,7 +53,7 @@ class PostsController < ApplicationController
     else
       Like.create(post: @post, user: current_user)
     end
-    redirect_to posts_path, notice: "Post was successfully liked."
+    redirect_to community_path(@post.community), notice: "Post was successfully liked."
   end
 
   private

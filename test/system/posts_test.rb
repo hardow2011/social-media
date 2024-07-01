@@ -4,11 +4,12 @@ class PostsTest < ApplicationSystemTestCase
   setup do
     login_as users(:john)
     @post = posts(:third)
+    @cooking_community = communities(:cooking)
+    @cars_community = communities(:cars)
   end
 
   test "Creating a new post" do
-    visit posts_path
-    assert_selector "h1", text: "Posts"
+    visit community_path(@cooking_community)
 
     click_on "New Post"
     assert_selector "h1", text: "New Post"
@@ -17,9 +18,14 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Caption", with: "Capybara post"
     click_on "Create Post"
 
-    assert_selector "h1", text: "Posts"
+    assert_text @cooking_community.handle
+    assert_text @cooking_community.name
+    assert_text @cooking_community.description
 
     assert_text "Capybara post"
+
+    assert_text @cooking_community.posts.first.caption
+    assert_no_text @cars_community.posts.first.caption
   end
 
   test "Showing a post" do
