@@ -8,8 +8,7 @@ class CommunitiesTest < ApplicationSystemTestCase
   end
 
   test "Creating a new Community" do
-    visit posts_path
-    assert_selector "h1", text: "Posts"
+    visit root_path
 
     click_on "New Community"
     assert_selector "h1", text: 'New Community'
@@ -25,8 +24,7 @@ class CommunitiesTest < ApplicationSystemTestCase
   end
 
   test "Showing a Community" do
-    visit posts_path
-    assert_selector "h1", text: "Posts"
+    visit root_path
 
     click_on @cooking_community.handle
 

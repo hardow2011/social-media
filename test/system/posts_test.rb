@@ -3,7 +3,7 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     login_as users(:john)
-    @post = posts(:third)
+    @post = posts(:first)
     @cooking_community = communities(:cooking)
     @cars_community = communities(:cars)
   end
@@ -29,17 +29,20 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test "Showing a post" do
-    visit posts_path
-    assert_selector "h1", text: "Posts"
+    visit root_path
 
     click_link @post.caption
 
-    assert_selector "h1", text: @post.caption
+    assert_text @post.caption
   end
 
   test "Updating a post" do
-    visit posts_path
-    assert_selector "h1", text: "Posts"
+    visit root_path
+    click_on @cooking_community.handle
+
+    assert_text @cooking_community.handle
+    assert_text @cooking_community.name
+    assert_text @cooking_community.description
 
     click_on "Edit", match: :first
     assert_selector "h1", text: "Edit Post"
@@ -47,12 +50,17 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Caption", with: "Updated Post"
     click_on "Update Post"
 
-    assert_selector "h1", text: "Posts"
+    assert_text @cooking_community.handle
+    assert_text @cooking_community.name
+    assert_text @cooking_community.description
+
     assert_text "Updated Post"
   end
 
   test "Destroying a post" do
-    visit posts_path
+    visit root_path
+    click_on @cooking_community.handle
+
     assert_text @post.caption
 
     click_on "Delete", match: :first
@@ -60,8 +68,7 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test "Liking a post" do
-    visit posts_path
-    assert_selector "h1", text: "Posts"
+    visit root_path
 
     assert_button "(0) Likes"
 

@@ -26,7 +26,9 @@
     </div>
     <div class="block">
         <div class="buttons is-right">
-            <%= link_to 'Back to Posts', community_posts_path, class: 'button' %>
+            <% unless community.new_record? %>
+                <%= link_to 'Back to Posts', community_path(community.handle), class: 'button' %>
+            <% end %>
             <%= f.submit class: 'button is-success' %>
         </div>
     </div>
