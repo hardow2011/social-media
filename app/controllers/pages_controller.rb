@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @communities = Community.all
+    @posts = Post.ordered
   end
 end

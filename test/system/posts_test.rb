@@ -73,4 +73,11 @@ class PostsTest < ApplicationSystemTestCase
 
     assert_button "(0) Likes"
   end
+
+  test "showing all posts on home page" do
+    visit root_path
+
+    assert_text @cooking_community.posts.first.caption
+    assert_text @cars_community.posts.first.caption
+  end
 end

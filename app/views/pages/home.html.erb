@@ -6,19 +6,28 @@
     </div>
     <div class="block">
         <% if user_signed_in? %>
-            <%
-=begin%>
- <%= link_to "View posts", community_posts_path, class: "button is-link" %> 
-<%
-=end%>
         <% else %>
             <%= link_to "Sign in", new_user_session_path, class: "button" %>
         <% end %>
     </div>
     <div class="block">
-        <% for community in @communities %>
-            <%= link_to community.handle, community_path(community) %>
-        <% end %>
+        <div class="columns">
+            <div class="column is-one-fifth">
+                <div class="grid">
+                    <% for community in @communities %>
+                        <div class="cell">
+                            <%= link_to handle_path(community), community_path(community),
+                                class: 'button is-fullwidth is-justify-content-flex-start' %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="column">
+                <% for post in @posts%>
+                    <%= render partial: 'posts/post', locals: { post: post, community_handle: post.community.handle } %>
+                <% end %>
+            </div>
+        </div>
     </div>
   </div>
 </main>
