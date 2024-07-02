@@ -9,6 +9,11 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
+    <% if user_signed_in? %>
+      <div class="navbar-start">
+        <%= link_to "Home", root_path, class: 'navbar-item' %>
+      </div>
+    <% end %>
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
