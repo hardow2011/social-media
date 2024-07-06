@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyString
-  post: one
+not_enough_salt:
+  content: I find that it lacks salt
+  post: grannys_recipe
 
-two:
-  content: MyString
-  post: two
+amazing_guide:
+  content: This post helped me fix my car!!!
+  post: ford_repair_guide
+
+lacking_flavor:
+  content: The flavor is not all there yet. Sorry granny
+  post: grannys_recipe
+
+use_some_herbs:
+  content: Ths recipe could really use some herbs
+  post: grannys_recipe
