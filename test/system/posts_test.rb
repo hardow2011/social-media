@@ -34,6 +34,10 @@ class PostsTest < ApplicationSystemTestCase
     click_link @post.caption
 
     assert_text @post.caption
+
+    @post.comments.first(3).each do |comment|
+      assert_text comment.content
+    end
   end
 
   test "Updating a post" do
