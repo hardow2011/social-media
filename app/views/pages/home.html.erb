@@ -1,16 +1,6 @@
 <main class="section">
 <div class="container">
     <div class="block">
-        <h1>Social Media</h1>
-        <p>A nice social media app!</p>
-    </div>
-    <div class="block">
-        <% if user_signed_in? %>
-        <% else %>
-            <%= link_to "Sign in", new_user_session_path, class: "button" %>
-        <% end %>
-    </div>
-    <div class="block">
         <div class="columns">
             <div class="column is-one-fifth">
                 <div class="grid">
@@ -20,11 +10,13 @@
                                 class: 'button is-fullwidth is-justify-content-flex-start' %>
                         </div>
                     <% end %>
-                    <div class="cell">
-                        <%= link_to "New Community",
-                                new_community_path,
-                                class: "button is-link" %>
-                    </div>
+                    <% if user_signed_in? %>
+                        <div class="cell">
+                            <%= link_to "New Community",
+                                    new_community_path,
+                                    class: "button is-link" %>
+                        </div>
+                    <% end %>
                 </div>
             </div>
             <div class="column">

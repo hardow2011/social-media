@@ -1,6 +1,8 @@
 class CommunitiesController < ApplicationController
   include CommunitySetting
 
+  skip_before_action :authenticate_user!, only: %[show]
+
   before_action only: %i[show] do
     set_community_by_handle(params[:id])
   end

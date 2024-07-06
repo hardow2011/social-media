@@ -2,11 +2,13 @@
   <div class="container">
     <div class="block">
       <div class="columns is-vcentered">
-        <div class="column is-flex is-justify-content-flex-end">
-        <%= link_to "New Post",
-                    new_community_post_path(@community),
-                    class: "button is-link" %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="column is-flex is-justify-content-flex-end">
+          <%= link_to "New Post",
+                      new_community_post_path(@community),
+                      class: "button is-link" %>
+          </div>
+        <% end %>
     </div>
     </div>
     <div class="block">
