@@ -2,18 +2,18 @@
 
 first:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
-  caption: first post
+  caption: My granny's secret recipe
   user: john
   community: cooking
 
 second:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
-  caption: second
+  caption: Ford Mustang repair guide
   user: carlos
   community: cars
 
 third:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
-  caption: third
+  caption: Quick inexpensive breakfast
   user: john
   community: cooking
