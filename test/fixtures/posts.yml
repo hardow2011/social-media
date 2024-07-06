@@ -1,18 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-first:
+grannys_recipe:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: My granny's secret recipe
   user: john
   community: cooking
 
-second:
+ford_repair_guide:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: Ford Mustang repair guide
   user: carlos
   community: cars
 
-third:
+inexpensive_breakfast:
   unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: Quick inexpensive breakfast
   user: john
