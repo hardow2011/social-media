@@ -27,6 +27,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :community
   has_many :likes, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
 
   before_validation :assign_unique_id, on: :create
 
