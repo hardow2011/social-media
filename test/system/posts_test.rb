@@ -3,7 +3,7 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   setup do
     login_as users(:john)
-    @post = posts(:first)
+    @post = posts(:grannys_recipe)
     @cooking_community = communities(:cooking)
     @cars_community = communities(:cars)
   end
