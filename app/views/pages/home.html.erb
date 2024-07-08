@@ -3,20 +3,22 @@
     <div class="block">
         <div class="columns">
             <div class="column is-one-fifth">
-                <div class="grid">
-                    <% for community in @communities %>
-                        <div class="cell">
-                            <%= link_to handle_path(community), community_path(community),
-                                class: 'button is-fullwidth is-justify-content-flex-start' %>
-                        </div>
-                    <% end %>
-                    <% if user_signed_in? %>
-                        <div class="cell">
-                            <%= link_to "New Community",
-                                    new_community_path,
-                                    class: "button is-link" %>
-                        </div>
-                    <% end %>
+                <div class="fixed-grid has-1-cols">
+                    <div class="grid">
+                        <% for community in @communities %>
+                            <div class="cell">
+                                <%= link_to handle_path(community), community_path(community),
+                                    class: 'button is-fullwidth is-justify-content-flex-start' %>
+                            </div>
+                        <% end %>
+                        <% if user_signed_in? %>
+                            <div class="cell">
+                                <%= link_to "New Community",
+                                        new_community_path,
+                                        class: "button is-link" %>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
             </div>
             <div class="column">
