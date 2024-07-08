@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-like_1_post_2:
-  post: second
+like_grannys_recipe_1:
+  post: grannys_recipe
   user: carlos
 
-like_2_post_2:
-  post: second
+like_grannys_recipe_2:
+  post: grannys_recipe
   user: john
+
+like_inexpensive_breakfast_1:
+  post: inexpensive_breakfast
+  user: carlos
