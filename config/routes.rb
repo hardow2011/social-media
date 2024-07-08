@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :communities, path: 'c' do
     resources :posts
-    resources :comments
   end
   post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
+  resources :comments
 end
