@@ -3,10 +3,51 @@
     <div class="block">
       <%= link_to sanitize("&larr; Back to posts"), community_path(@post.community) %>
     </div>
-    <div>
+    <div class="block">
       <h1>
         <%= @post.caption %>
       </h1>
+    </div>
+    <div class="block">
+      <%= form_with model: @comment do |f| %>
+        <% if @comment.errors.any? %>
+          <div>
+            <%= @comment.errors.full_messages.to_sentence.capitalize %>
+          <div>
+        <% end %>
+        <%= hidden_field_tag :post_id, @post.id %>
+        <div class="field">
+            <%= f.label :content, "Add a Comment", class: 'label' %>
+            <div class="control">
+                <%= f.text_field :content, class: 'input' %>
+            </div>
+        </div>
+        <div class="block">
+            <div class="buttons is-right">
+                <%= f.submit 'Comment', class: 'button is-success' %>
+            </div>
+        </div>                
+      <% end %>
+    </div>
+    <div class="fixed-grid has-1-cols">
+      <div class="grid">
+        <% for comment in @post.comments %>
+        <div class="cell">
+            <div>
+              <p><%= comment.content %></p>
+            </div>
+            <div class="buttons is-right">
+                <%= button_to "Delete",
+                            comment_path(comment),
+                            method: :delete,
+                            class: 'button is-danger' %>
+                <%= link_to "Edit",
+                            edit_comment_path(comment),
+                            class: 'button is-link' %>
+            </div>            
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </main>

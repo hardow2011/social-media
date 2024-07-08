@@ -13,7 +13,7 @@ class CommentsTest < ApplicationSystemTestCase
 
     click_on @post.caption
 
-    fill_in "Add a comment", with: comment_content
+    fill_in "comment[content]", with: comment_content
     click_on "Comment"
 
     assert_text comment_content
