@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include CommunitySetting
 
-  skip_before_action :authenticate_user!, only: %[show]
+  skip_before_action :authenticate_user!, only: %i[show]
 
   before_action :set_post, only: %i[show edit update destroy like_post]
   before_action only: %i[new edit destroy] do
