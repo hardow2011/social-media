@@ -37,13 +37,13 @@
               <p><%= comment.content %></p>
             </div>
             <div class="buttons is-right">
-                <%= button_to "Delete",
+                <%= link_to "Edit comment",
+                            edit_comment_path(comment),
+                            class: 'button is-link' %>
+                <%= button_to "Delete comment",
                             comment_path(comment),
                             method: :delete,
                             class: 'button is-danger' %>
-                <%= link_to "Edit",
-                            edit_comment_path(comment),
-                            class: 'button is-link' %>
             </div>            
         </div>
         <% end %>
