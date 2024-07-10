@@ -38,6 +38,12 @@ class PostsTest < ApplicationSystemTestCase
     @post.comments.first(3).each do |comment|
       assert_text comment.content
     end
+
+    click_on handle_path(@post.community)
+
+    assert_text @cooking_community.handle
+    assert_text @cooking_community.name
+    assert_text @cooking_community.description
   end
 
   test "Updating a post" do
