@@ -22,9 +22,7 @@
                 </div>
             </div>
             <div class="column">
-                <% for post in @posts%>
-                    <%= render partial: 'posts/post', locals: { post: post, community_handle: post.community.handle } %>
-                <% end %>
+                <%= render @posts %>
             </div>
         </div>
     </div>

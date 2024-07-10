@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   before_action :set_comment, only: %i[edit update destroy]
 
   def new
@@ -11,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
 
     if @comment.save
-      redirect_to community_post_path(@post.community, @post), notice: 'Comment was succesfully created.'
+      redirect_to post_path(@post), notice: 'Comment was succesfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +23,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       post = @comment.post
-      redirect_to community_post_path(post.community, post), notice: "Comment was successfully updated."
+      redirect_to post_path(post), notice: "Comment was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +32,7 @@ class CommentsController < ApplicationController
   def destroy
     post = @comment.post
     @comment.destroy
-    redirect_to community_post_path(post.community, post), notice: "Comment was successfully destroyted."
+    redirect_to post_path(post), notice: "Comment was successfully destroyted."
   end
 
   private

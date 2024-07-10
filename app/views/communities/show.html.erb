@@ -5,7 +5,7 @@
         <% if user_signed_in? %>
           <div class="column is-flex is-justify-content-flex-end">
           <%= link_to "New Post",
-                      new_community_post_path(@community),
+                      new_post_path(@community),
                       class: "button is-link" %>
           </div>
         <% end %>
@@ -17,9 +17,7 @@
         <h3 class="subtitle is-3"><%= @community.description %></h3>
     </div>
     <div class="block">
-    <% for post in @community.posts%>
-      <%= render partial: 'posts/post', locals: { post: post, community_handle: @community.handle } %>
-    <% end %>
+      <%= render @community.posts %>
     </div>
   </div>
 </main>
