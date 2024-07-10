@@ -43,9 +43,9 @@ class CommentsTest < ApplicationSystemTestCase
 
     assert_text comment.content
 
-    click_on "Update comment"
+    click_on "Edit comment", match: :first
 
-    fill_in "Update comment", with: new_comment
+    fill_in "comment[content]", with: new_comment
     click_on "Save edits"
 
     assert_no_text comment.content
