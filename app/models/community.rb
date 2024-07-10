@@ -5,7 +5,6 @@
 #  id          :bigint           not null, primary key
 #  description :string           not null
 #  handle      :string           not null
-#  name        :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -16,7 +15,7 @@
 class Community < ApplicationRecord
   has_many :posts
 
-  before_create :strip_fields, :set_handle
+  before_create :strip_fields
 
   # The id will be the handle
   def to_param
@@ -30,11 +29,7 @@ class Community < ApplicationRecord
   private
 
   def strip_fields
-    self.name = self.name.strip
+    self.handle = self.handle.strip
     self.description = self.description.strip
-  end
-
-  def set_handle
-    self.handle = self.name.parameterize
   end
 end

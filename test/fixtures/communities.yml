@@ -1,11 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 cooking:
-  name: Cooking
   handle: cooking
   description: For cooking enthusiasts
 
 cars:
-  name: Cars
   handle: cars
   description: Everything engine related!!!

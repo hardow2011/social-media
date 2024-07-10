@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
+  include CommunityHelper
   setup do
     login_as users(:john)
     @post = posts(:grannys_recipe)
@@ -19,7 +20,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Create Post"
 
     assert_text @cooking_community.handle
-    assert_text @cooking_community.name
     assert_text @cooking_community.description
 
     assert_text "Capybara post"
@@ -42,7 +42,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on handle_path(@post.community)
 
     assert_text @cooking_community.handle
-    assert_text @cooking_community.name
     assert_text @cooking_community.description
   end
 
@@ -51,7 +50,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on @cooking_community.handle
 
     assert_text @cooking_community.handle
-    assert_text @cooking_community.name
     assert_text @cooking_community.description
 
     click_on "Edit", match: :first
@@ -61,7 +59,6 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Update Post"
 
     assert_text @cooking_community.handle
-    assert_text @cooking_community.name
     assert_text @cooking_community.description
 
     assert_text "Updated Post"

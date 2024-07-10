@@ -13,7 +13,6 @@ class CommunitiesTest < ApplicationSystemTestCase
     click_on "New Community"
     assert_selector "h1", text: 'New Community'
 
-    fill_in "Name", with: "Casual Woodworking"
     fill_in "Description", with: "For wood workers and beyond"
 
     click_on "Create Community"
@@ -29,7 +28,6 @@ class CommunitiesTest < ApplicationSystemTestCase
     click_on @cooking_community.handle
 
     assert_text @cooking_community.handle
-    assert_text @cooking_community.name
     assert_text @cooking_community.description
 
     assert_text @cooking_community.posts.first.caption

@@ -12,9 +12,8 @@
     </div>
     </div>
     <div class="block">
-        <h1 class="title is-1"><%= @community.name %></h1>
-        <p>c/<%= @community.handle %></p>
-        <h3 class="subtitle is-3"><%= @community.description %></h3>
+        <h1>c/<%= @community.handle %></h1>
+        <h4 class="subtitle is-3"><%= @community.description %></h4>
     </div>
     <div class="block">
       <%= render @community.posts %>
