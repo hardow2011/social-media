@@ -13,12 +13,31 @@ class CommunitiesTest < ApplicationSystemTestCase
     click_on "New Community"
     assert_selector "h1", text: 'New Community'
 
+    fill_in "Description", with: @cooking_community.description
+
+    click_on "Create Community"
+
+    assert_text "Handle can't be blank."
+
+    fill_in "Handle", with: @cooking_community.handle
+    fill_in "Description", with: @cooking_community.description
+
+    click_on "Create Community"
+
+    assert_text "Handle must be unique."
+
+    fill_in "Handle", with: "       #{@cooking_community.handle}      "
+
+    click_on "Create Community"
+
+    assert_text "Handle must be unique."
+
+    fill_in "Handle", with: "casual-woodworking"
     fill_in "Description", with: "For wood workers and beyond"
 
     click_on "Create Community"
 
-    assert_text "Casual Woodworking"
-    assert_text "casual-woodworking"
+    assert_text "c/casual-woodworking"
     assert_text "For wood workers and beyond"
   end
 

@@ -7,6 +7,14 @@
     <div class="columns">
         <div class="column">
             <div class="field">
+                <%= f.label :handle, "Handle", class: 'label' %>
+                <div class="control">
+                    <%= f.text_field :handle, class: 'input' %>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="field">
                 <%= f.label :description, "Description", class: 'label' %>
                 <div class="control">
                     <%= f.text_field :description, class: 'input' %>

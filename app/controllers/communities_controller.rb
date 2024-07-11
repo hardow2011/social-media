@@ -32,6 +32,6 @@ class CommunitiesController < ApplicationController
   end
 
   def community_params
-    params.require(:community).permit(:description)
+    params.require(:community).permit(:handle, :description)
   end
 end

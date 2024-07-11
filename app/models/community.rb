@@ -13,13 +13,21 @@
 #  index_communities_on_handle  (handle)
 #
 class Community < ApplicationRecord
+  include DataFormatting
   has_many :posts
 
-  before_create :strip_fields
+  before_validation do
+    unless self.handle.present?
+      self.errors.add(:handle, :present, message: "can't be blank.")
+    end
+    strip_whitespace(:handle)
+    if Community.where(handle: self.handle).exists?
+      self.errors.add(:handle, :uniqueness, message: "must be unique.")
+    end
+  end
 
-  # The id will be the handle
-  def to_param
-    handle
+  before_save do
+    strip_whitespace(:description)
   end
 
   def self.get_by_handle(handle)
@@ -28,8 +36,10 @@ class Community < ApplicationRecord
 
   private
 
-  def strip_fields
-    self.handle = self.handle.strip
-    self.description = self.description.strip
+  def validate_handle
+    # Only accept alphanumeric chars and hypens
+    unless self.handle.match?(/^[a-zA-Z0-9-]+$/)
+      self.errors.add(:handle, 'Handle not valid')
+    end
   end
 end
