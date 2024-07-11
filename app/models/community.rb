@@ -15,6 +15,7 @@
 class Community < ApplicationRecord
   include DataFormatting
   has_many :posts
+  has_and_belong_to_many :users
 
   before_validation do
     unless self.handle.present?

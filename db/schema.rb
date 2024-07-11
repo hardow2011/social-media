@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_10_202344) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_11_005301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_202344) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["handle"], name: "index_communities_on_handle"
+  end
+
+  create_table "communities_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "community_id", null: false
+    t.index ["user_id", "community_id"], name: "index_communities_users_on_user_id_and_community_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
