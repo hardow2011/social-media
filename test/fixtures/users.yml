@@ -7,6 +7,7 @@
 john:
   email: john@email.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'john') %>
+  communities: cars
 
 carlos:
   email: carlos@email.com

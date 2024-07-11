@@ -59,14 +59,15 @@ class CommunitiesTest < ApplicationSystemTestCase
     click_on @cooking_community.handle
 
     click_on "Join"
-    assert_text "Joined"
+    assert_button "Joined"
   end
 
   test "Quit a community" do
     visit root_path
 
-    click_on @cooking_community.handle
+    click_on @cars_community.handle
 
     click_on "Joined"
-    assert_text "Join"
+    assert_button "Join"
+  end
 end

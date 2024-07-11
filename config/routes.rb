@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     resources :posts
   end
   post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
+  post 'join_community/:id', to: 'communities#join_community', as: 'join_community'
   resources :comments
 end
