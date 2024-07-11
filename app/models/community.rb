@@ -30,6 +30,11 @@ class Community < ApplicationRecord
     strip_whitespace(:description)
   end
 
+  # The id will be the handle
+  def to_param
+    handle
+  end
+
   def self.get_by_handle(handle)
     Community.find_sole_by(handle: handle)
   end
