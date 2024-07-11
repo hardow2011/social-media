@@ -41,7 +41,7 @@ class CommunitiesTest < ApplicationSystemTestCase
     assert_text "For wood workers and beyond"
   end
 
-  test "Showing a Community" do
+  test "Showing a community" do
     visit root_path
 
     click_on @cooking_community.handle
@@ -52,4 +52,21 @@ class CommunitiesTest < ApplicationSystemTestCase
     assert_text @cooking_community.posts.first.caption
     assert_no_text @cars_community.posts.first.caption
   end
+
+  test "Join a community" do
+    visit root_path
+
+    click_on @cooking_community.handle
+
+    click_on "Join"
+    assert_text "Joined"
+  end
+
+  test "Quit a community" do
+    visit root_path
+
+    click_on @cooking_community.handle
+
+    click_on "Joined"
+    assert_text "Join"
 end
