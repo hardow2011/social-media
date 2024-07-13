@@ -1,25 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 grannys_recipe:
-  unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: My granny's secret recipe
   user: john
   community: cooking
 
 ford_repair_guide:
-  unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: Ford Mustang repair guide
   user: carlos
   community: cars
 
 inexpensive_breakfast:
-  unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: Quick inexpensive breakfast
   user: john
   community: cooking
 
 kia_strange_sound:
-  unique_id: <%= SecureRandom.alphanumeric(11) %>
   caption: My Kia has been making strange sounds since yesterday. Any idea why?
   user: john
   community: cars
