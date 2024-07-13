@@ -2,9 +2,10 @@ require "application_system_test_case"
 
 class CommentsTest < ApplicationSystemTestCase
   setup do
-    login_as users(:john)
+    @current_user = users(:john)
+    login_as @current_user
 
-    @post = posts(:grannys_recipe)
+    @post = @current_user.feed_posts.first
   end
 
   test "Posting a comment" do

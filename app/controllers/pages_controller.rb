@@ -3,6 +3,10 @@ class PagesController < ApplicationController
 
   def home
     @communities = Community.all
-    @posts = Post.ordered
+    if user_signed_in?
+      @posts = current_user.feed_posts
+    else
+      @posts = Post.ordered
+    end
   end
 end

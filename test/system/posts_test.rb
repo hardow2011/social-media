@@ -3,8 +3,10 @@ require "application_system_test_case"
 class PostsTest < ApplicationSystemTestCase
   include CommunityHelper
   setup do
-    login_as users(:john)
-    @post = posts(:grannys_recipe)
+    @current_user = users(:john)
+    login_as @current_user
+
+    @post = @current_user.feed_posts.first
     @cooking_community = communities(:cooking)
     @cars_community = communities(:cars)
   end
@@ -41,8 +43,8 @@ class PostsTest < ApplicationSystemTestCase
 
     click_on handle_path(@post.community)
 
-    assert_text @cooking_community.handle
-    assert_text @cooking_community.description
+    assert_text @post.community.handle
+    assert_text @post.community.description
   end
 
   test "Updating a post" do
@@ -66,12 +68,14 @@ class PostsTest < ApplicationSystemTestCase
 
   test "Destroying a post" do
     visit root_path
-    click_on @cooking_community.handle
+    take_screenshot
 
-    assert_text @post.caption
+    my_post = @current_user.posts.first
+
+    assert_text my_post.caption
 
     click_on "Delete", match: :first
-    assert_no_text @post.caption
+    assert_no_text my_post.caption
   end
 
   test "Liking a post" do
@@ -88,10 +92,27 @@ class PostsTest < ApplicationSystemTestCase
     assert_button "(0) Likes"
   end
 
-  test "Showing all posts on home page" do
+  test "Showing posts on home page" do
     visit root_path
 
-    assert_text @cooking_community.posts.first.caption
-    assert_text @cars_community.posts.first.caption
+    non_feed_posts = posts - @current_user.feed_posts
+
+    # Only show posts from subbed communities on home page when logged in
+
+    @current_user.feed_posts.each do |p|
+      assert_text p.caption
+    end
+
+    non_feed_posts.each do |p|
+      assert_no_text p.caption
+    end
+
+    click_on "Sign out"
+
+    # Show all posts all communities on home page when not logged in
+
+    posts.each do |p|
+      assert_text p.caption
+    end
   end
 end

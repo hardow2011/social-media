@@ -21,6 +21,8 @@
 #  fk_rails_...  (community_id => communities.id)
 #  fk_rails_...  (user_id => users.id)
 #
+#
+# TODO: remove unique_id
 class Post < ApplicationRecord
   require 'securerandom'
 

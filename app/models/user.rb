@@ -31,4 +31,10 @@ class User < ApplicationRecord
   def belongs_to_community?(community)
     self.communities.include?(community)
   end
+
+  # TODO: eventually paginate
+  def feed_posts
+    # self.communities.extract_associated(:posts).flatten.sort_by(&:id).reverse
+    Post.joins(:community).joins(community: :users).where(communities_users: {user_id: self.id}).ordered
+  end
 end

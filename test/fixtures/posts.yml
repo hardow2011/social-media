@@ -17,3 +17,9 @@ inexpensive_breakfast:
   caption: Quick inexpensive breakfast
   user: john
   community: cooking
+
+kia_strange_sound:
+  unique_id: <%= SecureRandom.alphanumeric(11) %>
+  caption: My Kia has been making strange sounds since yesterday. Any idea why?
+  user: john
+  community: cars
