@@ -5,17 +5,57 @@ grannys_recipe:
   user: john
   community: cooking
 
-ford_repair_guide:
-  caption: Ford Mustang repair guide
-  user: carlos
+kia_strange_sound:
+  caption: My Kia has been making strange sounds since yesterday. Any idea why?
+  user: john
   community: cars
+
+underwhelming_modern_music:
+  caption: Does anyone else fell like modern music doesn't feel as great as 1990's music?
+  user: amidala
+  community: pop_music
+
+skin_care_routine_tips:
+  caption: Inexpensive skin care routine tips
+  user: damaris
+  community: skin_care
 
 inexpensive_breakfast:
   caption: Quick inexpensive breakfast
   user: john
   community: cooking
 
-kia_strange_sound:
-  caption: My Kia has been making strange sounds since yesterday. Any idea why?
-  user: john
+facial_hair_acceptance:
+  caption: Learning to embrace facial hair
+  user: montague
+  community: skin_care
+
+ford_repair_guide:
+  caption: Ford Mustang repair guide
+  user: carlos
+  community: cars
+
+pixar_modern_state:
+  caption: Would Steve Jobs be satisfied with the current state of Pixar?
+  user: phileas
+  community: tech
+
+victorian_era_furniture:
+  caption: My wife thinks I'm wrong for wanting to mix victorian era furniture with modern carpetry. Is she right?
+  user: carlos
+  community: interior_design
+
+open_headphone_sound_fidelity:
+  caption: How unreliable are open headphones in terms of sound fidelity?
+  user: damaris
+  community: audio_engineering
+
+linux_for_audio_mixing:
+  caption: My Mac recently broke, but I have Linux Mint installed in another PC. How do Linux softwares and performance compare for audio mixing?
+  user: damaris
+  community: audio_engineering
+
+acura_integra_tuning:
+  caption: Is tuning my Acura Integra safe?
+  user: rosario
   community: cars

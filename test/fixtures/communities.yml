@@ -7,3 +7,23 @@ cooking:
 cars:
   handle: cars
   description: Everything engine related!!!
+
+tech:
+  handle: tech
+  description: Looking out for the future
+
+interior_design:
+  handle: interior_design
+  description: Builing and maintaining beautiful homes.
+
+skin_care:
+  handle: skin_care
+  description: On the path to clear skin
+
+audio_engineering:
+  handle: audio_engineering
+  description: Audio Engineering for professionals and hobbyists
+
+pop_music:
+  handle: pop_music
+  description: At the forefront of music.

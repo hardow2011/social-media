@@ -3,15 +3,39 @@
 not_enough_salt:
   content: I find that it lacks salt
   post: grannys_recipe
+  user: damaris
 
 amazing_guide:
   content: This post helped me fix my car!!!
   post: ford_repair_guide
+  user: phileas
 
 lacking_flavor:
   content: The flavor is not all there yet. Sorry granny
-  post: grannys_recipe
+  post: 
+  user: montague
 
 use_some_herbs:
   content: Ths recipe could really use some herbs
   post: grannys_recipe
+  user: amidala
+
+take_it_to_a_mechanic:
+  content: Just take it to a mechanic
+  post: kia_strange_sound
+  user: eleanor
+  
+take it to a mechanic:
+  content: Would this tutotial work for a man with beard?
+  post: skin_care_routine_tips
+  user: phileas
+
+delicious_and_fast:
+  content: Delicious and fast!
+  post: inexpensive_breakfast
+  user: carlos
+
+make_and_model:
+  content: Could you please provide more information and the make and model of your Kia?
+  post: kia_strange_sound
+  user: rosario

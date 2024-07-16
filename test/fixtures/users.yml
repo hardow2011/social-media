@@ -7,8 +7,39 @@
 john:
   email: john@email.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'john') %>
-  communities: cars
+  communities: cars, audio_engineering, tech
 
 carlos:
   email: carlos@email.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'carlos') %>
+  communities: interior_design, pop_music, cars
+
+amidala:
+  email: amidala@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'amidala') %>
+  communities: pop_music, tech
+
+rosario:
+  email: rosario@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'rosario') %>
+  communities: cars
+
+damaris:
+  email: damaris@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'damaris') %>
+  communities: interior_design, skin_care, audio_engineering, cooking, tech
+
+eleanor:
+  email: eleanor@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'eleanor') %>
+  communities: pop_music
+
+montague:
+  email: montague@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'montague') %>
+  communities: skin_care, tech, cooking pop_music
+
+phileas:
+  email: phileas@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'phileas') %>
+  communities: audio_engineering
