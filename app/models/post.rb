@@ -29,7 +29,7 @@ class Post < ApplicationRecord
 
   validates :caption, presence: true
 
-  scope :ordered, -> { order(id: :desc) }
+  scope :ordered, -> { order(created_at: :desc) }
 
   def likes_amount
     self.likes.length
