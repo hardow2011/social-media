@@ -59,3 +59,8 @@ acura_integra_tuning:
   caption: Is tuning my Acura Integra safe?
   user: rosario
   community: cars
+
+how_much_salt:
+  caption: How do I know how much salt to apply to a dish when the instructions say "add salt to taste"?
+  user: phileas
+  community: cooking

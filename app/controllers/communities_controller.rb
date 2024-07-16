@@ -1,5 +1,6 @@
 class CommunitiesController < ApplicationController
   include CommunitySetting
+  include PaginationHelper
 
   skip_before_action :authenticate_user!, only: %[show]
 
@@ -23,7 +24,23 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    page = params[:page].to_i
+    # If page param lower than 1, then make @page = 1...
+    # otherwise keep @page = param[:page]
+    @page = page < 1 ? 1 : page
 
+    @last_page = (@community.posts.size.to_f / posts_per_page).ceil
+    @last_page = @last_page == 0 ? 1 : @last_page
+
+    if @page > @last_page
+      @page = @last_page
+      @posts = @community.posts.page(@last_page, posts_per_page)
+    else
+      @posts = @community.posts.page(@page, posts_per_page)
+    end
+
+    @is_next_page = !@community.posts.page(@page+1, posts_per_page).empty?
+    @is_previous_page = @page - 1 <= 0 ? false : true
   end
 
   def join_community

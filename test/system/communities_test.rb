@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class CommunitiesTest < ApplicationSystemTestCase
+  include PaginationHelper
   setup do
     login_as users(:john)
     @cooking_community = communities(:cooking)
@@ -35,6 +36,8 @@ class CommunitiesTest < ApplicationSystemTestCase
     fill_in "Handle", with: "casual-woodworking"
     fill_in "Description", with: "For wood workers and beyond"
 
+    sleep 3
+
     click_on "Create Community"
 
     assert_text "c/casual-woodworking"
@@ -49,7 +52,7 @@ class CommunitiesTest < ApplicationSystemTestCase
     assert_text @cooking_community.handle
     assert_text @cooking_community.description
 
-    assert_text @cooking_community.posts.first.caption
+    assert_text @cooking_community.posts.page(1, posts_per_page).first.caption
     assert_no_text @cars_community.posts.first.caption
   end
 
@@ -69,5 +72,19 @@ class CommunitiesTest < ApplicationSystemTestCase
 
     click_on "Joined"
     assert_button "Join"
+  end
+
+  test "Paginate through community posts" do
+    visit root_path
+
+    click_on @cooking_community.handle
+
+    assert_text @cooking_community.posts.page(1, posts_per_page).first.caption
+    assert_no_text @cooking_community.posts.page(2, posts_per_page).first.caption
+
+    click_on 'Next page'
+
+    assert_text @cooking_community.posts.page(2, posts_per_page).first.caption
+    assert_no_text @cooking_community.posts.page(1, posts_per_page).first.caption
   end
 end

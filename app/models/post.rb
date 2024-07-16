@@ -20,7 +20,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
-  require 'securerandom'
 
   belongs_to :user
   belongs_to :community
@@ -30,6 +29,7 @@ class Post < ApplicationRecord
   validates :caption, presence: true
 
   scope :ordered, -> { order(created_at: :desc) }
+  scope :page, ->(page_number, posts_per_page) { ordered.offset(posts_per_page * (page_number - 1)).limit(posts_per_page) }
 
   def likes_amount
     self.likes.length

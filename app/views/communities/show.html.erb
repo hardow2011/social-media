@@ -21,7 +21,16 @@
         <h4 class="subtitle is-3"><%= @community.description %></h4>
     </div>
     <div class="block">
-      <%= render @community.posts.ordered %>
+      <%= render @posts %>
+    </div>
+    <div class="block">
+      <nav class="pagination" role="navigation" aria-label="pagination">
+        <%= link_to 'Last page', community_path(@community, page: @page-1), class: 'pagination-previous' %>
+        <%= link_to 'Next page', community_path(@community, page: @page+1), class: "pagination-next" %>
+      </nav>
+      
+    </div>
+    <div class="block">
     </div>
   </div>
 </main>
