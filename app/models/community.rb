@@ -7,15 +7,22 @@
 #  handle      :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  creator_id  :bigint           not null
 #
 # Indexes
 #
-#  index_communities_on_handle  (handle)
+#  index_communities_on_creator_id  (creator_id)
+#  index_communities_on_handle      (handle)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (creator_id => users.id)
 #
 class Community < ApplicationRecord
   include DataFormatting
   has_many :posts
   has_and_belongs_to_many :users
+  belongs_to :creator, class_name: 'User'
 
   before_validation do
     unless self.handle.present?
@@ -38,6 +45,10 @@ class Community < ApplicationRecord
 
   def self.get_by_handle(handle)
     Community.find_sole_by(handle: handle)
+  end
+
+  def created_by
+    self.creator
   end
 
   private

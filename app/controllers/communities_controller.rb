@@ -13,6 +13,7 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.new(community_params)
+    @community.creator = current_user
 
     if @community.save
       redirect_to community_path(@community), notice: "Community was created successfully."
