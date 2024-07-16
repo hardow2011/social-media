@@ -34,7 +34,7 @@
           <%# TODO: redirect to post after sign in %>
           <div class="buttons is-right">
             <%= link_to "Comment",
-                  new_user_session_path,
+                  new_user_session_path(redirect_to: request.path),
                   class: "button is-link" %>
           </div>
         <% end %>
