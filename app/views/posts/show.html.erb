@@ -31,22 +31,7 @@
     </div>
     <div class="fixed-grid has-1-cols">
       <div class="grid">
-        <% for comment in @post.comments %>
-        <div class="cell">
-            <div>
-              <p><%= comment.content %></p>
-            </div>
-            <div class="buttons is-right">
-                <%= link_to "Edit comment",
-                            edit_comment_path(comment),
-                            class: 'button is-link' %>
-                <%= button_to "Delete comment",
-                            comment_path(comment),
-                            method: :delete,
-                            class: 'button is-danger' %>
-            </div>            
-        </div>
-        <% end %>
+        <%= render @post.comments %>
       </div>
     </div>
   </div>
