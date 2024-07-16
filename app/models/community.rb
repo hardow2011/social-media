@@ -24,15 +24,7 @@ class Community < ApplicationRecord
   has_and_belongs_to_many :users
   belongs_to :creator, class_name: 'User'
 
-  before_validation do
-    unless self.handle.present?
-      self.errors.add(:handle, :present, message: "can't be blank.")
-    end
-    strip_whitespace(:handle)
-    if Community.where(handle: self.handle).exists?
-      self.errors.add(:handle, :uniqueness, message: "must be unique.")
-    end
-  end
+  validate :handle_format
 
   before_save do
     strip_whitespace(:description)
@@ -53,10 +45,18 @@ class Community < ApplicationRecord
 
   private
 
-  def validate_handle
+  def handle_format
+    unless self.handle.present?
+      self.errors.add(:handle, :present, message: "can't be blank.")
+      return
+    end
+    strip_whitespace(:handle)
+    if Community.where(handle: self.handle).exists?
+      self.errors.add(:handle, :uniqueness, message: "must be unique.")
+    end
     # Only accept alphanumeric chars and hypens
     unless self.handle.match?(/^[a-zA-Z0-9-]+$/)
-      self.errors.add(:handle, 'Handle not valid')
+      self.errors.add(:handle, 'must only contain letter, numbers and hyphens.')
     end
   end
 end
