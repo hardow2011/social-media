@@ -25,7 +25,7 @@ take_it_to_a_mechanic:
   post: kia_strange_sound
   user: eleanor
   
-take it to a mechanic:
+work_with_a_beard:
   content: Would this tutotial work for a man with beard?
   post: skin_care_routine_tips
   user: phileas
@@ -39,3 +39,8 @@ make_and_model:
   content: Could you please provide more information and the make and model of your Kia?
   post: kia_strange_sound
   user: rosario
+
+faulty_radiator:
+  content: This could be due to a faulty radiator
+  post: kia_strange_sound
+  user: john
