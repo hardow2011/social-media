@@ -25,6 +25,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :delete_all
   has_many :likes, dependent: :delete_all
+  has_many :comments, dependent: :delete_all
 
   has_and_belongs_to_many :communities
 
