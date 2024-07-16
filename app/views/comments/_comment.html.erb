@@ -2,6 +2,7 @@
     <div>
         <p><%= comment.content %></p>
     </div>
+    <% if current_user && current_user.comments.include?(comment) %>
     <div class="buttons is-right">
         <%= link_to "Edit comment",
                     edit_comment_path(comment),
@@ -10,5 +11,6 @@
                     comment_path(comment),
                     method: :delete,
                     class: 'button is-danger' %>
-    </div>            
+    </div>
+    <% end %>            
 </div>
