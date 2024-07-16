@@ -74,6 +74,7 @@ class CommunitiesTest < ApplicationSystemTestCase
     assert_button "Join"
   end
 
+  # TODO: fix
   test "Paginate through community posts" do
     visit root_path
 
