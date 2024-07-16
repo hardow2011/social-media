@@ -44,3 +44,8 @@ faulty_radiator:
   content: This could be due to a faulty radiator
   post: kia_strange_sound
   user: john
+
+weak_bass:
+  content: I think that due to the open back desig, the bass is quite weak.
+  post: open_headphone_sound_fidelity
+  user: john
