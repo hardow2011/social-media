@@ -68,7 +68,6 @@ class PostsTest < ApplicationSystemTestCase
 
   test "Destroying a post" do
     visit root_path
-    take_screenshot
 
     my_post = @current_user.posts.first
 
