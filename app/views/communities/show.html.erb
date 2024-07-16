@@ -21,7 +21,7 @@
         <h4 class="subtitle is-3"><%= @community.description %></h4>
     </div>
     <div class="block">
-      <%= render @community.posts %>
+      <%= render @community.posts.ordered %>
     </div>
   </div>
 </main>
