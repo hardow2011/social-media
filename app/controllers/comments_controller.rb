@@ -9,8 +9,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      post = @comment.post
-      redirect_to post_path(post), notice: 'Comment was succesfully created.'
+      @post = @comment.post
+      respond_to do |format|
+        format.html { redirect_to post_path(@post), notice: 'Comment was succesfully created.' }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end

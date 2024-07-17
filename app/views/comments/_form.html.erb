@@ -1,15 +1,23 @@
 <% @submit_btn_txt = comment.new_record? ? 'Comment' : 'Save edits' %>
 <% @label_txt = comment.new_record? ? 'Add a comment' : 'Edit comment' %>
+<% post ||= comment.post %>
+
 <%= form_with model: comment do |f| %>
     <% if comment.errors.any? %>
         <div>
         <%= comment.errors.full_messages.to_sentence.capitalize %>
-        <div>
+        </div>
     <% end %>
+    <%= f.hidden_field :post_id, value: post.id %> 
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="field">
         <%= f.label :content, @label_txt, class: 'label' %>
         <div class="control">
-            <%= f.text_field :content, class: 'input', autofocus: true, onfocus: "this.setSelectionRange(this.value.length,this.value.length);" %>
+            <% if comment.new_record? %>
+                <%= f.text_field :content, class: 'input', autofocus: true, onfocus: "this.setSelectionRange(this.value.length,this.value.length);" %>
+            <% else %>
+                <%= f.text_field :content, class: 'input' %>
+            <% end %>
         </div>
     </div>
     <div class="block">

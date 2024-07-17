@@ -10,25 +10,8 @@
     </div>
     <div class="block">
       <% if current_user %>
-        <%= form_with model: @comment do |f| %>
-          <% if @comment.errors.any? %>
-            <div>
-              <%= @comment.errors.full_messages.to_sentence.capitalize %>
-            </div>
-          <% end %>
-          <%= f.hidden_field :post_id, value: @post.id %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <div class="field">
-              <%= f.label :content, "Add a Comment", class: 'label' %>
-              <div class="control">
-                  <%= f.text_field :content, class: 'input' %>
-              </div>
-          </div>
-          <div class="block">
-            <div class="buttons is-right">
-                <%= f.submit 'Comment', class: 'button is-success' %>
-            </div>
-          </div>                
+        <%= turbo_frame_tag @comment do %>
+          <%= render partial: "comments/form", locals: { comment: @comment } %>
         <% end %>
       <% else %>
         <%# TODO: redirect to post after sign in %>
@@ -41,7 +24,9 @@
     </div>
     <div class="fixed-grid has-1-cols">
       <div class="grid">
-        <%= render @post.comments.ordered %>
+        <%= turbo_frame_tag "comments" do %>
+          <%= render @post.comments.ordered %>
+        <% end %>
       </div>
     </div>
   </div>
