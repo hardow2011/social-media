@@ -22,7 +22,15 @@
                 </div>
             </div>
             <div class="column">
-                <%= render @posts %>
+                <div class="block">
+                    <%= render @posts %>
+                </div>
+                <div class="block">
+                    <nav class="pagination" role="navigation" aria-label="pagination">
+                        <%= link_to 'Last page', root_path(page: @page-1), class: 'pagination-previous' %>
+                        <%= link_to 'Next page', root_path(page: @page+1), class: "pagination-next" %>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

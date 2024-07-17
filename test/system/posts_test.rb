@@ -1,8 +1,10 @@
 require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
+  # TODO fix tests
   include CommunityHelper
   setup do
+    @posts_per_page = 5
     @current_user = users(:john)
     login_as @current_user
 
@@ -98,7 +100,7 @@ class PostsTest < ApplicationSystemTestCase
 
     # Only show posts from subbed communities on home page when logged in
 
-    @current_user.feed_posts.each do |p|
+    @current_user.feed_posts.page(1, @posts_per_page).each do |p|
       assert_text p.caption
     end
 

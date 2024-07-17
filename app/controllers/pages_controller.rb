@@ -1,12 +1,15 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
+  include PaginationHelper
 
   def home
     @communities = Community.all
     if user_signed_in?
-      @posts = current_user.feed_posts
+      pagination = Pagination.new(params[:page], current_user.feed_posts)
     else
-      @posts = Post.ordered
+      pagination = Pagination.new(params[:page], Post.ordered)
     end
+    @posts = pagination.items
+    @page = pagination.page
   end
 end
