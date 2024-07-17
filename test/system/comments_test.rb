@@ -13,6 +13,7 @@ class CommentsTest < ApplicationSystemTestCase
     visit root_path
 
     click_on @post.caption
+    assert_text @post.caption
 
     fill_in "comment[content]", with: comment_content
     click_on "Comment"
@@ -39,17 +40,18 @@ class CommentsTest < ApplicationSystemTestCase
     visit root_path
 
     click_on @post.caption
+    assert_text @post.caption
 
     comment = @post.comments.first
-
-    assert_text comment.content
 
     click_on "Edit comment", match: :first
 
     fill_in "comment[content]", with: new_comment
+    assert_text @post.caption
     click_on "Save edits"
 
-    assert_no_text comment.content
+    assert_text comment.content
+    assert_text @post.caption
     assert_text new_comment
   end
 end
