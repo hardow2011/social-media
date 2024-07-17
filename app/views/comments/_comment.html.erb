@@ -1,16 +1,18 @@
-<div class="cell">
-    <div>
-        <p><%= comment.content %></p>
+<%= turbo_frame_tag comment do %>
+    <div class="cell">
+        <div>
+            <p><%= comment.content %></p>
+        </div>
+        <% if current_user && current_user.comments.include?(comment) %>
+        <div class="buttons is-right">
+            <%= link_to "Edit comment",
+                        edit_comment_path(comment),
+                        class: 'button is-link' %>
+            <%= button_to "Delete comment",
+                        comment_path(comment),
+                        method: :delete,
+                        class: 'button is-danger' %>
+        </div>
+        <% end %>            
     </div>
-    <% if current_user && current_user.comments.include?(comment) %>
-    <div class="buttons is-right">
-        <%= link_to "Edit comment",
-                    edit_comment_path(comment),
-                    class: 'button is-link' %>
-        <%= button_to "Delete comment",
-                    comment_path(comment),
-                    method: :delete,
-                    class: 'button is-danger' %>
-    </div>
-    <% end %>            
-</div>
+<% end %>

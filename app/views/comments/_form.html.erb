@@ -1,4 +1,5 @@
 <% @submit_btn_txt = comment.new_record? ? 'Comment' : 'Save edits' %>
+<% @label_txt = comment.new_record? ? 'Add a comment' : 'Edit comment' %>
 <%= form_with model: comment do |f| %>
     <% if comment.errors.any? %>
         <div>
@@ -6,9 +7,9 @@
         <div>
     <% end %>
     <div class="field">
-        <%= f.label :content, "Add a Comment", class: 'label' %>
+        <%= f.label :content, @label_txt, class: 'label' %>
         <div class="control">
-            <%= f.text_field :content, class: 'input' %>
+            <%= f.text_field :content, class: 'input', autofocus: true, onfocus: "this.setSelectionRange(this.value.length,this.value.length);" %>
         </div>
     </div>
     <div class="block">
