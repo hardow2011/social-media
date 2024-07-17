@@ -46,11 +46,13 @@ class CommentsTest < ApplicationSystemTestCase
 
     click_on "Edit comment", match: :first
 
-    fill_in "comment[content]", with: new_comment
+    within '#comments' do
+      fill_in "comment[content]", with: new_comment
+    end
     assert_text @post.caption
     click_on "Save edits"
 
-    assert_text comment.content
+    assert_no_text comment.content
     assert_text @post.caption
     assert_text new_comment
   end
