@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+vote_grannys_recipe_1:
+  votable: grannys_recipe (Post)
+  user: carlos
+  upvote: true
+
+vote_grannys_recipe_2:
+  votable: grannys_recipe (Post)
+  user: john
+  upvote: true
+
+vote_inexpensive_breakfast_1:
+  votable: inexpensive_breakfast (Post)
+  user: carlos
+  upvote: true
