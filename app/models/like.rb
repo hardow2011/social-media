@@ -22,7 +22,4 @@
 class Like < ApplicationRecord
   belongs_to :likable, polymorphic: true
   belongs_to :user
-
-  validates :post, presence: true
-  validates :post, uniqueness: { scope: :user }
 end

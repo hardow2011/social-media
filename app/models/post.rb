@@ -23,7 +23,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   belongs_to :community
-  has_many :likes, dependent: :delete_all
+  has_many :likes, as: :likable, dependent: :delete_all
   has_many :comments, dependent: :delete_all
 
   validates :caption, presence: true
