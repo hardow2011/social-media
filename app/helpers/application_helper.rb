@@ -11,4 +11,8 @@ module ApplicationHelper
   def edit_post_path(post)
     edit_community_post_path(post.community, post)
   end
+
+  def to_b(value)
+    ['true', true, 1, '1'].include?(value)
+  end
 end
