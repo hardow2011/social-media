@@ -22,8 +22,9 @@
     </div>
     <footer class="card-footer">
       <div class="card-footer-item is-justify-content-flex-end">
-        <%= form_with url: like_post_path(post.id) do |f| %>
-          <%= f.submit "(#{post.likes_amount}) #{'Like'.pluralize(post.likes_amount)}", class: 'button is-success' %>
+        <%= form_with url: vote_post_path(post.id) do |f| %>
+          <%= f.hidden_field :upvote, value: true %> 
+          <%= f.submit "(#{post.upvote_sum}) #{'Like'.pluralize(post.upvote_sum)}", class: 'button is-success' %>
         <% end %>
       </div>
     </footer>

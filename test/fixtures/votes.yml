@@ -14,3 +14,8 @@ vote_inexpensive_breakfast_1:
   votable: inexpensive_breakfast (Post)
   user: carlos
   upvote: true
+
+vote_grannys_recipe_3:
+  votable: grannys_recipe (Post)
+  user: montague
+  upvote: false

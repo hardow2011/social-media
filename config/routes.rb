@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :communities, path: 'c' do
     resources :posts
   end
-  post 'like_post/:id', to: 'posts#like_post', as: 'like_post'
+  post 'vote_post/:id', to: 'posts#vote_post', as: 'vote_post'
   post 'join_community/:id', to: 'communities#join_community', as: 'join_community'
   resources :comments
 end
