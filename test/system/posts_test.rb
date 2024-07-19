@@ -79,18 +79,26 @@ class PostsTest < ApplicationSystemTestCase
     assert_no_text my_post.caption
   end
 
-  test "Liking a post" do
+  test "Upvoting and downvoting post" do
     visit root_path
 
-    assert_button "(0) Likes"
+    assert_text "0 Likes"
 
-    click_on "(0) Likes", match: :first
+    click_on "Like", match: :first
 
-    assert_button "(1) Like"
+    assert_text "1 Like"
 
-    click_on "(1) Like", match: :first
+    click_on "Like", match: :first
 
-    assert_button "(0) Likes"
+    assert_text "0 Likes"
+
+    click_on "Dislike", match: :first
+
+    assert_text "-1 Like"
+
+    click_on "Dislike", match: :first
+
+    assert_text "0 Likes"
   end
 
   test "Showing posts on home page" do
