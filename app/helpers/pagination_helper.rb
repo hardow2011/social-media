@@ -1,10 +1,5 @@
 module PaginationHelper
 
-  # Replace with POSTS_PER_PAGE
-  def posts_per_page
-    return 5
-  end
-
   POSTS_PER_PAGE = 5
 
   class Pagination

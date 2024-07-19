@@ -112,7 +112,9 @@ class PostsTest < ApplicationSystemTestCase
 
     # Show all posts all communities on home page when not logged in
 
-    posts.each do |p|
+    # This line because posts was an array. Made in ActiveRecord to use the scope
+    posts = Post.all
+    posts.page(1, @posts_per_page).each do |p|
       assert_text p.caption
     end
   end
