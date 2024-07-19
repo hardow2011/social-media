@@ -1,8 +1,6 @@
-<main class="section">
-    <div class="container">
-        <h1 class="title is-1">Edit Comment</h1>
-        <%= turbo_frame_tag @comment do %>
-            <%= render "form", comment: @comment %>
-        <% end %>
-    </div>
-</main>
+<div class="container">
+    <h1 class="title is-1">Edit Comment</h1>
+    <%= turbo_frame_tag @comment do %>
+        <%= render "form", comment: @comment %>
+    <% end %>
+</div>

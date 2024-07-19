@@ -1,37 +1,8 @@
-<main class="section">
-<div class="container">
-    <div class="block">
-        <div class="columns">
-            <div class="column is-one-fifth">
-                <div class="fixed-grid has-1-cols">
-                    <div class="grid">
-                        <% for community in @communities %>
-                            <div class="cell">
-                                <%= link_to handle_path(community), community_path(community),
-                                    class: 'button is-fullwidth is-justify-content-flex-start' %>
-                            </div>
-                        <% end %>
-                        <% if user_signed_in? %>
-                            <div class="cell">
-                                <%= link_to "New Community",
-                                        new_community_path,
-                                        class: "button is-link" %>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-            <div class="column">
-                <div class="block">
-                    <%= turbo_frame_tag 'posts' do %>
-                        <%= render @posts %>
-                    <% end %>
-                </div>
-                <div class="block">
-                    <%= render partial: 'communities/pagination', locals: { has_previous_page: @has_previous_page, has_next_page: @has_next_page, page: @page, path: root_path } %>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-</main>
+<div class="block">
+    <%= turbo_frame_tag 'posts' do %>
+        <%= render @posts %>
+    <% end %>
+</div>
+<div class="block">
+    <%= render partial: 'communities/pagination', locals: { has_previous_page: @has_previous_page, has_next_page: @has_next_page, page: @page, path: root_path } %>
+</div>

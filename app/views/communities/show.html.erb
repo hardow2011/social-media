@@ -1,34 +1,32 @@
-<main class="section">
-  <div class="container">
-    <div class="block">
-      <div class="columns is-justify-content-flex-end	 is-vcentered">
-          <% if user_signed_in? %>
-            <div class="column is-narrow">
-              <%= link_to "New Post",
-                          new_post_path(@community),
-                          class: "button is-link" %>
-            </div>
-            <div class="column is-narrow">
-              <%= turbo_frame_tag 'join_community' do %>
-                <%= form_with url: join_community_path(@community) do |f| %>
-                  <%= f.submit current_user.belongs_to_community?(@community) ? 'Joined' : 'Join', class: "button is-link" %>
-                <% end %>
+<div class="container">
+  <div class="block">
+    <div class="columns is-justify-content-flex-end	 is-vcentered">
+        <% if user_signed_in? %>
+          <div class="column is-narrow">
+            <%= link_to "New Post",
+                        new_post_path(@community),
+                        class: "button is-link" %>
+          </div>
+          <div class="column is-narrow">
+            <%= turbo_frame_tag 'join_community' do %>
+              <%= form_with url: join_community_path(@community) do |f| %>
+                <%= f.submit current_user.belongs_to_community?(@community) ? 'Joined' : 'Join', class: "button is-link" %>
               <% end %>
-            </div>
-          <% end %>
-      </div>
-    </div>
-    <div class="block">
-        <h1>c/<%= @community.handle %></h1>
-        <h4 class="subtitle is-3"><%= @community.description %></h4>
-    </div>
-    <div class="block">
-      <%= turbo_frame_tag 'posts' do %>
-        <%= render @posts %>
-      <% end %>
-    </div>
-    <div class="block">
-      <%= render partial: 'pagination', locals: { has_previous_page: @has_previous_page, has_next_page: @has_next_page, page: @page, path: community_path(@community) } %>
+            <% end %>
+          </div>
+        <% end %>
     </div>
   </div>
-</main>
+  <div class="block">
+      <h1>c/<%= @community.handle %></h1>
+      <h4 class="subtitle is-3"><%= @community.description %></h4>
+  </div>
+  <div class="block">
+    <%= turbo_frame_tag 'posts' do %>
+      <%= render @posts %>
+    <% end %>
+  </div>
+  <div class="block">
+    <%= render partial: 'pagination', locals: { has_previous_page: @has_previous_page, has_next_page: @has_next_page, page: @page, path: community_path(@community) } %>
+  </div>
+</div>

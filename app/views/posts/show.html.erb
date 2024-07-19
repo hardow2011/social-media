@@ -1,34 +1,32 @@
-<main class="section">
-  <div class="container">
-    <div class="block">
-      <%= link_to sanitize("&larr; #{handle_path(@post.community)}"), community_path(@post.community) %>
-    </div>
-    <div class="block">
-      <h1 class="mb-4">
-        <%= @post.caption %>
-      </h1>
-      <%= render partial: 'posts/voting_block', locals: { post: @post } %>
-    </div>
-    <div class="block">
-      <% if current_user %>
-        <%= turbo_frame_tag @comment do %>
-          <%= render partial: "comments/form", locals: { comment: @comment } %>
-        <% end %>
-      <% else %>
-        <%# TODO: redirect to post after sign in %>
-        <div class="buttons is-right">
-          <%= link_to "Comment",
-                new_user_session_path(redirect_to: request.path),
-                class: "button is-link" %>
-        </div>
+<div class="container">
+  <div class="block">
+    <%= link_to sanitize("&larr; #{handle_path(@post.community)}"), community_path(@post.community) %>
+  </div>
+  <div class="block">
+    <h1 class="mb-4">
+      <%= @post.caption %>
+    </h1>
+    <%= render partial: 'posts/voting_block', locals: { post: @post } %>
+  </div>
+  <div class="block">
+    <% if current_user %>
+      <%= turbo_frame_tag @comment do %>
+        <%= render partial: "comments/form", locals: { comment: @comment } %>
+      <% end %>
+    <% else %>
+      <%# TODO: redirect to post after sign in %>
+      <div class="buttons is-right">
+        <%= link_to "Comment",
+              new_user_session_path(redirect_to: request.path),
+              class: "button is-link" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="fixed-grid has-1-cols">
+    <div class="grid">
+      <%= turbo_frame_tag "comments" do %>
+        <%= render @post.comments.ordered %>
       <% end %>
     </div>
-    <div class="fixed-grid has-1-cols">
-      <div class="grid">
-        <%= turbo_frame_tag "comments" do %>
-          <%= render @post.comments.ordered %>
-        <% end %>
-      </div>
-    </div>
   </div>
-</main>
+</div>
