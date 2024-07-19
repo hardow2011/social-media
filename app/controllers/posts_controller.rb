@@ -66,7 +66,7 @@ class PostsController < ApplicationController
       if vote.save
       end
     end
-    redirect_to community_path(@post.community), notice: "Post was successfully liked."
+    redirect_to community_path(@post.community), notice: "Post was successfully voted on."
   end
 
 
