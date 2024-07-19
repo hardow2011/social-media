@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'pagination' do %>
+    <nav class="pagination is-justify-content-flex-end" role="navigation" aria-label="pagination">
+        <%= has_previous_page ? link_to('Previous page', "#{path}?page=#{page-1}", class: 'pagination-previous', data: {turbo_stream: true}) : nil %>
+        <%= has_next_page ? link_to('Next page', "#{path}?page=#{page+1}", class: "pagination-next", data: {turbo_stream: true}) : nil %>
+    </nav>
+<% end %>

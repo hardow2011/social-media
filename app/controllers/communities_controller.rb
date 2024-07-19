@@ -27,6 +27,13 @@ class CommunitiesController < ApplicationController
     pagination = Pagination.new(params[:page], @community.posts)
     @posts = pagination.items
     @page = pagination.page
+    @has_previous_page = pagination.has_previous_page
+    @has_next_page = pagination.has_next_page
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def join_community

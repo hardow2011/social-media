@@ -23,15 +23,12 @@
         <h4 class="subtitle is-3"><%= @community.description %></h4>
     </div>
     <div class="block">
-      <%= render @posts %>
+      <%= turbo_frame_tag 'posts' do %>
+        <%= render @posts %>
+      <% end %>
     </div>
     <div class="block">
-      <nav class="pagination" role="navigation" aria-label="pagination">
-        <%= link_to 'Last page', community_path(@community, page: @page-1), class: 'pagination-previous' %>
-        <%= link_to 'Next page', community_path(@community, page: @page+1), class: "pagination-next" %>
-      </nav>
-    </div>
-    <div class="block">
+      <%= render partial: 'pagination', locals: { has_previous_page: @has_previous_page, has_next_page: @has_next_page, page: @page, path: community_path(@community) } %>
     </div>
   </div>
 </main>
