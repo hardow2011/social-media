@@ -3,7 +3,7 @@ module PaginationHelper
   POSTS_PER_PAGE = 5
 
   class Pagination
-    attr_reader :page, :items
+    attr_reader :page, :items, :has_previous_page, :has_next_page
     def initialize(page, items, posts_per_page = POSTS_PER_PAGE)
       # If page arg lower than 1, then make @page = 1...
       # otherwise keep @page = page
@@ -13,8 +13,7 @@ module PaginationHelper
 
       @last_page = (items.size.to_f / posts_per_page).ceil
       @last_page = @last_page == 0 ? 1 : @last_page
-
-      if @page > @last_page
+      if @page >= @last_page
         @page = @last_page
         @has_next_page = false
         @items = items.page(@last_page, posts_per_page)
@@ -22,7 +21,6 @@ module PaginationHelper
         @has_next_page = true
         @items = items.page(@page, posts_per_page)
       end
-
       @has_previous_page = @page  <= 1 ? false : true
     end
   end
