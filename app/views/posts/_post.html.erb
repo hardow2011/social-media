@@ -22,19 +22,9 @@
     </div>
     <footer class="card-footer">
       <div class="card-footer-item is-justify-content-flex-end">
-        <div class="buttons is-right">
-          <%= form_with url: vote_post_path(post.id) do |f| %>
-            <%= f.hidden_field :upvote, value: true %> 
-            <%= f.submit "Like", class: 'button is-success' %>
-          <% end %>
-          <p>
-            <%= "#{post.upvote_sum} #{'Like'.pluralize(post.upvote_sum)}" %>
-          </p>
-          <%= form_with url: vote_post_path(post.id) do |f| %>
-            <%= f.hidden_field :upvote, value: false %> 
-            <%= f.submit "Dislike", class: 'button is-success' %>
-          <% end %>
-        </div>
+      <div class="content">
+        <%= render partial: 'posts/voting_block', locals: { post: post } %>
+      </div>
       </div>
     </footer>
   </div>

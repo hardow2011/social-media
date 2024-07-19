@@ -4,9 +4,10 @@
       <%= link_to sanitize("&larr; #{handle_path(@post.community)}"), community_path(@post.community) %>
     </div>
     <div class="block">
-      <h1>
+      <h1 class="mb-4">
         <%= @post.caption %>
       </h1>
+      <%= render partial: 'posts/voting_block', locals: { post: @post } %>
     </div>
     <div class="block">
       <% if current_user %>

@@ -55,18 +55,12 @@ class PostsController < ApplicationController
 
     vote = Vote.where(votable: @post, user: current_user).first_or_initialize
     if !vote.new_record?
-      if vote.upvote == upvote
-        vote.destroy
-      else
-        vote.upvote = !upvote
-        vote.save
-      end
+      vote.destroy
     else
       vote.upvote = upvote
-      if vote.save
-      end
+      vote.save
     end
-    redirect_to community_path(@post.community), notice: "Post was successfully voted on."
+    redirect_to post_path(@post), notice: "Post was successfully voted on."
   end
 
 

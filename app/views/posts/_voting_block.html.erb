@@ -1,0 +1,15 @@
+<%= turbo_frame_tag 'voting_block' do %>
+    <div class="buttons is-right">
+        <%= form_with url: vote_post_path(post.id) do |f| %>
+            <%= f.hidden_field :upvote, value: true %> 
+            <%= f.submit "Like", class: 'button is-success' %>
+        <% end %>
+        <span>
+            <%= "#{post.upvote_sum} #{'Like'.pluralize(post.upvote_sum)}" %>
+        </span>
+        <%= form_with url: vote_post_path(post.id) do |f| %>
+            <%= f.hidden_field :upvote, value: false %> 
+            <%= f.submit "Dislike", class: 'button is-success' %>
+        <% end %>
+    </div>
+<% end %>
