@@ -19,7 +19,8 @@
             <%= button_to "Sign out",
                     destroy_user_session_path,
                     method: :delete,
-                    class: "button is-danger" %>
+                    class: "button is-danger",
+                    data: { turbo: false } %>
             <% else %>
             <%= link_to "Sign in",
                 new_user_session_path,
