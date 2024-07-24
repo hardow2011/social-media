@@ -8,6 +8,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  username               :string(20)       not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -15,8 +16,10 @@
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
+  include DataFormatting
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
@@ -27,6 +30,17 @@ class User < ApplicationRecord
   has_many :comments, dependent: :delete_all
 
   has_and_belongs_to_many :communities
+
+  def to_param
+    username
+  end
+
+  def self.get_by_username(username)
+    User.find_sole_by(username: username)
+  end
+
+  validates :username, presence: true, uniqueness: true,
+    format: { with: DataFormatting::HANDLE_FORMAT, message: 'must only contain letter, numbers and hyphens' }
 
   def belongs_to_community?(community)
     self.communities.include?(community)

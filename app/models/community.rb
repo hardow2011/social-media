@@ -55,7 +55,7 @@ class Community < ApplicationRecord
       self.errors.add(:handle, :uniqueness, message: "must be unique.")
     end
     # Only accept alphanumeric chars and hypens
-    unless self.handle.match?(/^[a-zA-Z0-9-]+$/)
+    unless self.handle.match?(DataFormatting::HANDLE_FORMAT)
       self.errors.add(:handle, 'must only contain letter, numbers and hyphens.')
     end
   end

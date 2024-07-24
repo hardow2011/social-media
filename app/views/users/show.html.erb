@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="block">
+        <p><%= @user.username %></p>
+        <p><%= "u/#{@user.username}" %></p>
+    </div>
+    <%= render partial: 'posts/post', collection: @user.posts %>
+</div>

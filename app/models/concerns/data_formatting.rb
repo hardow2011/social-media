@@ -1,6 +1,8 @@
 module DataFormatting
   extend ActiveSupport::Concern
 
+  HANDLE_FORMAT = /[a-zA-Z0-9-]+/
+
   included do
     private
       def strip_whitespace(*attr_names)
