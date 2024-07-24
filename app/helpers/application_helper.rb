@@ -15,4 +15,8 @@ module ApplicationHelper
   def to_b(value)
     ['true', true, 1, '1'].include?(value)
   end
+
+  def sidebar_communities
+    Community.all
+  end
 end

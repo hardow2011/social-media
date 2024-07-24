@@ -3,7 +3,7 @@
     <div class="card-content">
       <div class="columns">
           <div class="column">
-              <%= link_to post.caption, post_path(post) %>
+              <%= link_to post.caption, post_path(post), data: { turbo: false } %>
           </div>
           <% if post.user == current_user %>
           <div class="column is-narrow">
@@ -14,7 +14,8 @@
                               class: 'button is-danger' %>
                   <%= link_to "Edit",
                               edit_post_path(post),
-                              class: 'button is-link' %>
+                              class: 'button is-link',
+                              data: { turbo: false } %>
               </div>
           </div>
           <% end %>

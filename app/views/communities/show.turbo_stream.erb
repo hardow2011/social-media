@@ -1,2 +1,3 @@
 <%= turbo_stream.update "posts", partial: 'posts/post', collection: @posts %>
 <%= turbo_stream.update "pagination", partial: 'communities/pagination', locals: { has_previous_page: @has_previous_page, has_next_page: @has_next_page, page: @page, path: community_path(@community) } %>
+<%= turbo_stream.replace "join_community", partial: 'communities/join_btn' %>

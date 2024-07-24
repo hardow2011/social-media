@@ -8,11 +8,7 @@
                         class: "button is-link" %>
           </div>
           <div class="column is-narrow">
-            <%= turbo_frame_tag 'join_community' do %>
-              <%= form_with url: join_community_path(@community) do |f| %>
-                <%= f.submit current_user.belongs_to_community?(@community) ? 'Joined' : 'Join', class: "button is-link" %>
-              <% end %>
-            <% end %>
+            <%= render partial: 'join_btn' %>
           </div>
         <% end %>
     </div>

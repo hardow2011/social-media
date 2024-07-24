@@ -19,7 +19,7 @@
                 <div class="column is-one-fifth">
                     <div class="fixed-grid has-1-cols">
                         <div class="grid">
-                            <% for community in @communities %>
+                            <% for community in sidebar_communities %>
                                 <div class="cell">
                                     <%= link_to handle_path(community), community_path(community),
                                         class: 'button is-fullwidth is-justify-content-flex-start' %>

@@ -29,7 +29,7 @@
             <% unless community.new_record? %>
                 <%= link_to 'Back to Posts', community_path(community.handle), class: 'button' %>
             <% end %>
-            <%= f.submit class: 'button is-success' %>
+            <%= f.submit class: 'button is-success', data: { turbo: false } %>
         </div>
     </div>
 <% end %>

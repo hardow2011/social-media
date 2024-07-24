@@ -19,7 +19,7 @@
     <div class="block">
         <div class="buttons is-right">
             <%= link_to 'Back to Posts', community_path(community), class: 'button' %>
-            <%= f.submit class: 'button is-success', data: {turbo_frame: '_top' } %>
+            <%= f.submit class: 'button is-success', data: { turbo: false } %>
         </div>
     </div>
 <% end %>
