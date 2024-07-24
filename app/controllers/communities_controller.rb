@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   include CommunitySetting
   include PaginationHelper
 
-  skip_before_action :authenticate_user!, only: %[show]
+  skip_before_action :authenticate_user!, only: %i[show]
 
   before_action only: %i[show join_community] do
     set_community_by_handle(params[:id])
